@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Cliente</title>
-  </head>
-  <body>
-    <h1>Cadastro de Cliente</h1>
-    <form action="{% url 'create' %}" method="POST">
-      {% csrf_token %}
-      {% for field in form %}
-        <div>
-          {{ field.label_tag }} {{ field }} <br />{{ field.errors }}
-        </div>
-      {% endfor %}
-      <input type="submit" value="Cadastrar" />
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+  Cadastro de Clientes
+{% endblock %}
+{% block content %}
+  <h1>Cadastro de Cliente</h1>
+  <form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        {{ field.label_tag }} {{ field }} <br />{{ field.errors }}
+      </div>
+    {% endfor %}
+    <input type="submit" value="Cadastrar" />
+  </form>
+{% endblock %}
